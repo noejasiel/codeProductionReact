@@ -8,7 +8,7 @@ export const App = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:4000/api/v1/curses", product)
+      .post(`${process.env.REACT_APP_API_URL}api/v1/curses`, product)
       .then(function (response) {
         console.log(response.data);
       })
@@ -36,6 +36,9 @@ export const App = () => {
           <h1 className=" text-white text-center p-4">
             Tremend app de Productos
           </h1>
+          <h2 className=" text-white text-center p-4">
+            {process.env.REACT_APP_API_URL}
+          </h2>
           <form onSubmit={handleSubmit} className="flex flex-col">
             <div className="flex justify-between">
               <input
